@@ -103,12 +103,22 @@ String::jQuery - Easy generating jQuery expressions
   jQuery();                           # => 'jQuery()'
   jQuery('a');                        # => 'jQuery("a")'
   jQuery(\'document');                # => 'jQuery(document)'
-  jQuery('a')->text();                # => 'jQuery("a').text()'
-  jQuery('a')->text('xxx');           # => 'jQuery("a').text("xxx")'
+  jQuery('a')->text();                # => 'jQuery("a").text()'
+  jQuery('a')->text('xxx');           # => 'jQuery("a").text("xxx")'
+
+  # passing functions
   jQuery('a')->click(sub { e => 'return false' });
                                       # => 'jQuery("a").click(function (e) { return false })'
+
+  # properties
   jQuery('a').'length';               # => 'jQuery("a").length'
+
+  # jQuery. functions
   jQuery->ajax({ method => 'POST' }); # => 'jQuery.ajax({"method:"POST"})'
+
+  # combined
+  jQuery('#content')->show()->on('click', 'a', sub { e => 'return false' })
+  # => 'jQuery("#content").show().on("click", "a", function (e) { return false })'
 
 =head1 DESCRIPTION
 
@@ -123,7 +133,7 @@ motemen E<lt>motemen@gmail.comE<gt>
 
 =head1 SEE ALSO
 
-L<HTML::JQuery>, which generates not an expression, but whole E<lt>scriptE<gt> tag
+L<HTML::JQuery>, which generates not an expression, but a whole C<< script >> tag
 
 =head1 LICENSE
 
